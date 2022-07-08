@@ -66,6 +66,8 @@ console.log(addMovie);
 
 function deleteMovie(event){
     event.target.parentNode.remove();
+    message.textContent = `${event.target.parentNode.firstChild.textContent} deleted`
+    revealMessage()
 }
     
 console.log(deleteMovie);
@@ -81,9 +83,21 @@ console.log(deleteMovie);
 function crossOffMovie(event){
     event.target.classList.toggle('checked'); 
     if (event.target.classList.contains('checked') === true){
-        message.textContent = 'movie watched'
+        // message.textContent = 'movie watched'
+        message.textContent = `${event.target.textContent} watched`
     }else{
-        message.textContent = 'movie added'
+        // message.textContent = 'movie added'
+        message.textContent = `${event.target.textContent} added`
     }
+    revealMessage()
 }
+
+
+function revealMessage(){
+    message.classList.remove('hide')
+    setTimeout(()=>{
+        message.classList.add('hide')
+    }, 1000)
+}
+
 
